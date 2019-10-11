@@ -35,7 +35,7 @@ export default {
   methods: {
     getHomeInfo() {
       return axios.get("../mock/index.json").then(res => {
-        //console.log(res.data.data);
+        console.log(res.data.data.iconList);
         this.swiperList = res.data.data.swiperList;
         this.iconList = res.data.data.iconList;
         this.recommendList = res.data.data.recommendList;

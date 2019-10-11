@@ -1,52 +1,54 @@
 <template>
   <div class="container">
+    <!-- <template v-for="(item,index) in list">
+      <img :src="item.image" alt :key="index" />
+    </template> -->
     <div>
-      
-       <nuxt-link to="/user/one">关于</nuxt-link>
-      <logo  />
-      <h1 class="title" @click="hello">
-        nuxtdemo
-      </h1>
-      <h2 class="subtitle">
-        testdemo
-      </h2>
+      <nuxt-link to="/user/one">关于</nuxt-link>
+      <logo />
+      <h1 class="title" @click="hello">nuxtdemo</h1>
+      <h2 class="subtitle">testdemo</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
+        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
-      <test-swiper></test-swiper>
+
+      <!-- <test-swiper></test-swiper> -->
+      <div class="el-icon-s-ticket"></div>
+      <Tabs></Tabs>
+      <a-icon type="plus-circle" />
+      <a-button type="primary">Primary</a-button>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import TestSwiper from '~/components/TestSwiper.vue'
+import Logo from "~/components/Logo";
+import TestSwiper from "~/components/TestSwiper";
+import Tabs from "~/components/Tabs.vue"
+import axios from "axios";
 export default {
   components: {
     TestSwiper,
-    Logo
+    Logo,
+    Tabs
     //layout: 'blog'     //布局组件 可以用于错误页面
   },
-  methods:{
-    hello(){
+  asyncData() {
+    return axios
+      .get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock")
+      .then(res => {
+        console.log(res.data.data.list);
+        return { list: res.data.data.list };
+      });
+  },
+  methods: {
+    hello() {
       console.log(this.$router);
-      this.$router.push('/user/');
+      this.$router.push("/user/");
     }
   }
-}
+};
 </script>
 
 <style>
@@ -60,8 +62,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -79,5 +81,8 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.el-icon-s-ticket{
+  color:blue;
 }
 </style>

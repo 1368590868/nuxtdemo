@@ -34,15 +34,17 @@ export default {
    ** Global CSS
    */
   css: [
-    { src: "swiper/dist/css/swiper.css" }
-
+    { src: "swiper/dist/css/swiper.css" },
+    'element-ui/lib/theme-chalk/index.css',
+    'ant-design-vue/dist/antd.css',
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: "~/plugins/vue-awesome-swiper.js", ssr: false },
-
+    {src: '~/plugins/ElementUI', ssr: true },
+    {src:'~/plugins/antd-ui.js',ssr:true}
   ],
   /*
    ** Nuxt.js dev-modules
@@ -67,6 +69,17 @@ export default {
    ** Build configuration
    */
   build: {
+    analyze: true,
+    transpile: [/^element-ui/],
+    loaders: {
+      less: {
+        javascriptEnabled: true,
+        modifyVars: {
+          'primary-color': '#41b883',
+          'layout-body-background': '#fff'
+        }
+      }
+    },
     /*
      ** You can extend webpack config here
      */
