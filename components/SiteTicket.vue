@@ -30,7 +30,7 @@
       <!-- 景区服务 -->
       <a-tab-pane tab="景区服务" key="2" forceRender>
         <div class="siteticket-wrap">
-          <div class="ticket" v-for="(item,index) in ticket" :key="index">
+          <div class="ticket" v-for="(item,index) in landscape" :key="index">
             <div class="icon-ticket">
               <div class="el-icon-s-ticket"></div>
               <div class="ticket-type">{{item.ticketype}}</div>
@@ -110,9 +110,13 @@
 </template>
 <script>
 export default {
+  scrollToTop: true,
   props: {
     ticket: {
       type: Array
+    },
+    landscape:{
+      type:Array
     }
   },
   data() {
@@ -123,6 +127,7 @@ export default {
   methods: {
     callback(key) {
       console.log(key);
+      console.log(this.landscape)
     }
   }
 };

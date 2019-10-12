@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    
     <!-- <template v-for="(item,index) in list">
       <img :src="item.image" alt :key="index" />
     </template> -->
-    <div>
+    <!-- <div>
       <nuxt-link to="/user/one">关于</nuxt-link>
       <logo />
       <h1 class="title" @click="hello">nuxtdemo</h1>
@@ -11,15 +12,23 @@
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
-      </div>
-
+      </div> -->
       <!-- <test-swiper></test-swiper> -->
-      <div class="el-icon-s-ticket"></div>
-      <Tabs></Tabs>
-      <a-icon type="plus-circle" />
+      <!-- <div class="el-icon-s-ticket"></div> -->
+      <!-- <Tabs></Tabs> -->
+      <!-- <a-icon type="plus-circle" />
       <a-button type="primary">Primary</a-button>
-    </div>
-  </div>
+    </div> -->
+    <!-- 走马灯 -->
+    
+    <a-carousel autoplay>
+    <div v-for="(list,index) in list" :key="index">
+  <img :src="list.image" ></div>
+  </a-carousel>
+  <!-- <div v-for="(list,index) in list" :key="index">
+   <img :src="list.image" ></div> -->
+  </div> 
+
 </template>
 
 <script>
@@ -36,7 +45,7 @@ export default {
   },
   asyncData() {
     return axios
-      .get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock")
+      .get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock/")
       .then(res => {
         console.log(res.data.data.list);
         return { list: res.data.data.list };
@@ -46,12 +55,17 @@ export default {
     hello() {
       console.log(this.$router);
       this.$router.push("/user/");
-    }
+    },
+    onChange (a, b, c) {
+      console.log(a, b, c)
+    },
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -85,4 +99,21 @@ export default {
 .el-icon-s-ticket{
   color:blue;
 }
+
+/* For demo */
+.zmd{
+  width: 500px;
+}
+.ant-carousel  /deep/ .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel  /deep/  .slick-slide h3 {
+  color: #fff;
+}
+
 </style>

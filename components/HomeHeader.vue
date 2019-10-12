@@ -1,7 +1,7 @@
 <template>
    <div class="header">
        <div class="left">
-           <div class="iconfont header-back">&#xe624;</div>
+           <a-icon type="caret-left" />
        </div>
        <div class="title">
            <span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题

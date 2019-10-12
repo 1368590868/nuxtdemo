@@ -28,7 +28,7 @@
       <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>
     </a-tabs> -->
     <div class="ticket">
-      <site-ticket :ticket="ticket"></site-ticket>
+      <site-ticket :ticket="ticket" :landscape="landscape"></site-ticket>
     </div>
     <div class="product-list">产品列表</div>
   </div>
@@ -41,6 +41,7 @@ import SiteNotice from "~/components/SiteNotice";
 import RecommendList from "~/components/RecommendList";
 import SiteTicket from "@/components/SiteTicket";
 import axios from "axios";
+import { promised, resolve, reject } from 'q';
 export default {
   components: {
     SitePicture,
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       ticket: [],
+      landscape:[],  //风机服务列表
       //整个页面需要的动态数据,先初始化
       site: {
         name: "故宫",
@@ -172,11 +174,19 @@ export default {
       this.$router.push("./Home");
     },
     getDetailInfo() {
-      axios.get("../mock/index.json").then(this.getDetailInfoSuccess);
+     
+     return axios.get("../mock/index.json").then(res=>{
+       this.ticket = res.data.data.ticket;
+     }).then(axios.get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock/ticket").then(res=>{
+       this.landscape = res.data.data.ticket
+     }).catch(console.log("未开启本地mock服务器")));
     },
-    getDetailInfoSuccess(res) {
-      this.ticket = res.data.data.ticket;
-    },
+    // getDetailInfoSuccess(res) {
+    //   this.ticket = res.data.data.ticket;
+    // },
+    // getDatailLandscape(res){
+    //   this.landscape = res.data.data.ticket
+    // },
     //控制Ant-Design Tabs
     callback(key) {
       console.log(key);
