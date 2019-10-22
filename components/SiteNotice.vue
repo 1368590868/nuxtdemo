@@ -36,5 +36,6 @@ export default {
  }
  .text{
      margin-left: 10px;
+     font-size: 16px;
  }
 </style>

@@ -28,7 +28,11 @@
       <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>
     </a-tabs> -->
     <div class="ticket">
-      <site-ticket :ticket="ticket" :landscape="landscape"></site-ticket>
+      <site-ticket
+       :ticket="ticket" 
+       :landscape="landscape"
+       :day = "day"
+       ></site-ticket>
     </div>
     <div class="product-list">产品列表</div>
   </div>
@@ -54,6 +58,7 @@ export default {
     return {
       ticket: [],
       landscape:[],  //风机服务列表
+      day:[],     //一日游list
       //整个页面需要的动态数据,先初始化
       site: {
         name: "故宫",
@@ -174,12 +179,16 @@ export default {
       this.$router.push("./Home");
     },
     getDetailInfo() {
-     
+     //第一次请求本地json 成功再请求3个mock json
      return axios.get("../mock/index.json").then(res=>{
        this.ticket = res.data.data.ticket;
      }).then(axios.get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock/ticket").then(res=>{
        this.landscape = res.data.data.ticket
-     }).catch(console.log("未开启本地mock服务器")));
+     }).catch(console.log("未开启本地mock服务器")))
+       .then(axios.get("http://127.0.0.1:7300/mock/5d9df3681df5f316cca7d4ea/mock/day").then(res=>{
+         this.day = res.data.data.ticket
+       }))
+     
     },
     // getDetailInfoSuccess(res) {
     //   this.ticket = res.data.data.ticket;
@@ -199,6 +208,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .detail-wrap {
   width: 100%;
   background: #f5f5f5;

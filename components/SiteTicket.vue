@@ -56,7 +56,7 @@
       <!-- 一日游 -->
       <a-tab-pane tab="一日游" key="3">
         <div class="siteticket-wrap">
-          <div class="ticket" v-for="(item,index) in ticket" :key="index">
+          <div class="ticket" v-for="(item,index) in day" :key="index">
             <div class="icon-ticket">
               <div class="el-icon-s-ticket"></div>
               <div class="ticket-type">{{item.ticketype}}</div>
@@ -82,7 +82,7 @@
       <!-- 热销组合 -->
       <a-tab-pane tab="热销组合" key="4">
         <div class="siteticket-wrap">
-          <div class="ticket" v-for="(item,index) in ticket" :key="index">
+          <div class="ticket" v-for="(item,index) in day" :key="index">
             <div class="icon-ticket">
               <div class="el-icon-s-ticket"></div>
               <div class="ticket-type">{{item.ticketype}}</div>
@@ -117,7 +117,8 @@ export default {
     },
     landscape:{
       type:Array
-    }
+    },
+    day:Array
   },
   data() {
     return {
@@ -143,6 +144,9 @@ export default {
 .ant-tabs-nav .ant-tabs-tab{
   margin:0
 }
+.el-icon-s-ticket{
+  color: #00bcd4;
+}
 .siteticket-wrap {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -151,6 +155,7 @@ export default {
   margin-top: 10px;
   display: flex;
   flex-flow: column wrap;
+  padding: 24px 0;
 }
 .ticket-type {
   margin-left: 15px;
@@ -170,8 +175,11 @@ export default {
 }
 
 .price {
-  font-size: 1.2rem;
+  font-size: .5rem;
   color: #ff8300;
+}
+.ant-tabs{
+  font-size: 18px;
 }
 .price-q {
   font-size: 11px;
@@ -179,9 +187,11 @@ export default {
 .desc,
 .desc2 {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  flex-flow: row nowrap;
+  justify-content:space-between;
   margin-top: 20px;
+  padding: 10px 20px;
+  overflow: hidden;
 }
 .desc3 {
   display: flex;

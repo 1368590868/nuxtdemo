@@ -1,4 +1,3 @@
-import axios from 'axios';
 <template>
    <div class="decription-wrap">
        <div class="one">
@@ -24,7 +23,7 @@ import axios from 'axios';
        <div class="two">
            <div>
            <img src="../assets/images/location.png" alt="" class="location">
-           <span>北京市东城区景山前街4号</span>
+           <span style="font-size:18px;">北京市东城区景山前街4号</span>
            </div>
            <img src="../assets/images/right-arrow.png" alt="" class="arrow">
        </div>
@@ -95,7 +94,7 @@ export default {
 }
 .point-area{
     color:#ff8352;
-   
+   font-size: 18px;
 }
 .point{
     font-size: 18px;
@@ -104,7 +103,9 @@ export default {
     margin-left: 12px;
     font-size: 14px;
 }
-
+.title{
+    font-size: 18px;
+}
 .arrow{
     width: 36px;
     height: auto;

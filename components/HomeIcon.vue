@@ -2,13 +2,15 @@
   <div class="wrapper">
     <!-- 走马灯 -->
     <a-carousel >
-     <div v-for="(item, index) in pages" :key="index">
-        <div class="icon" v-for="icon in item" :key="icon.id">
-          <div class="icon-img">
-            <img class="icon-img-inner" :src="icon.imgUrl" />
-          </div>
-          <p class="icon-desc">{{ icon.desc }}</p>
+     <div v-for="(item, index) in pages" :key="index" >
+       <div class="icon">
+        <div v-for="icon in item" :key="icon.id" class="icon-img">
+           <nuxt-link :to="'/iconlist/'+icon.id" tag="a"> 
+               <img class="icon-img-inner" :src="icon.imgUrl" />
+               <p class="icon-desc">{{ icon.desc }}</p>
+           </nuxt-link>
         </div>
+      </div>
       </div>
     </a-carousel>
     <!-- <div v-swiper:mySwiper="swiperOption">
@@ -31,16 +33,19 @@ export default {
   },
   data() {
     return {
-      swiperOption: {
-        
-      }
+      id:[{
+        id:4,
+        id:5,
+        id:6
+      }]
     };
   },
   computed: {
     pages() {
+      //6个图标为一页
       const pages = [];
       this.iconList.forEach((item, index) => {
-        const page = Math.floor(index / 8);
+        const page = Math.floor(index / 6);
         if (!pages[page]) {
           pages[page] = [];
         }
@@ -55,33 +60,27 @@ export default {
 
 .wrapper {
   width: 100%;
-  margin-top: 0.1rem;
 }
 .icon {
-  float: left;
-  width: 25%;
-  height: 0;
-  padding-bottom: 25%;
-  position: relative;
-  .icon-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0.5rem;
-    .icon-img-inner {
-      height: 100%;
-    }
-  }
-  .icon-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 0.5rem;
-    line-height: 0.5rem;
-    text-align: center;
-  }
+  width:100%;
+  min-height:200px;
+  display:grid;
+  grid-template-columns: repeat(3,33.33%);
+  grid-template-rows: 50% 50%;
+}
+.icon-img{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.icon-img-inner{
+  width:50%;
+  height:50%;
+  display: inline-block;
+  margin:0 auto;
 }
 //走马灯
 .ant-carousel /deep/ .slick-slide {

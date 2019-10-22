@@ -1,7 +1,7 @@
 <template>
 <div class="c-content">
     <div class="title">
-        <span>热门推荐</span>
+        <a-icon class="title-img" type="fire"/><span>热门推荐</span>
     </div>
     <div>
         <ul class="list">
@@ -40,21 +40,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c-content{
-  
-}
 .title{
-    margin:10px 5px;
+  margin-left: .3rem;
 }
 .title span{
-  font-size: 16px;
+  font-size: .5rem;
+  line-height: .44rem;
+  color: black;
+}
+.title-img{
+  font-size: .55rem;
+  color: #ff9616;
+}
+.list{
+  padding: 24px;
 }
 .list-item{
   display: flex;
   flex-flow:row nowrap;
-  justify-content: flex-start;
+  justify-content:flex-start;
   align-items: center;
-  margin:10px 5px;
 }
 .content-img{
   width: 120px;
@@ -63,6 +68,7 @@ export default {
 }
 .desc{
   line-height: 1.5;
+  font-size: 18px;
 }
 .name{
   font-size: 16px;

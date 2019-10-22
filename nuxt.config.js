@@ -37,14 +37,16 @@ export default {
     { src: "swiper/dist/css/swiper.css" },
     'element-ui/lib/theme-chalk/index.css',
     'ant-design-vue/dist/antd.css',
+    'assets/css/style.css'
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: "~/plugins/vue-awesome-swiper.js", ssr: false },
-    {src: '~/plugins/ElementUI', ssr: true },
-    {src:'~/plugins/antd-ui.js',ssr:true}
+    {src: '~/plugins/ElementUI', ssr: false },
+    {src:'~/plugins/antd-ui.js',ssr:false},
+    {src:'~/plugins/vue-initial-list.js',ssr: false}
   ],
   /*
    ** Nuxt.js dev-modules
@@ -85,6 +87,9 @@ export default {
      */
     extend(config, ctx) {},
     vendor:['axios']   //多个页面使用axios  只打包一次
+  },
+  router:{
+   
   }
 
 }

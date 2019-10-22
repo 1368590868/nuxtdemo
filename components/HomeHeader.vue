@@ -1,14 +1,16 @@
 <template>
    <div class="header">
-       <div class="left">
-           <a-icon type="caret-left" />
+       <div class="left" style="color:#fff;margin-left:5px;">
+           <a-icon type="left-square" />
        </div>
        <div class="title">
-           <span class="iconfont">&#xe632;</span>输入城市/景点/游玩主题
+           <div class="search">
+           <a-icon type="search" />输入城市/景点/游玩主题</div>
        </div>
-       <div class="right">
+       <div class="right"  style="color:#fff;margin-right:5px;">
            {{city}}
-           <span class="iconfont">&#xe64a;</span>
+           <span @click="citylist">
+           <a-icon type="down-square" /></span>
        </div>
    </div>
 </template>
@@ -18,41 +20,35 @@ export default {
     data() {
         return {
         city : '呼和浩特'}
+    },
+    methods:{
+        citylist(){
+            this.$router.push('citylist')
+        }
     }
 }
 </script>
 
-<style lang='scss' scoped>
-    .header{
-        height: 0.88rem;
-        background :#00bcd4;
-        display: flex;
-        .left{
-            width:0.8rem;
-            .header-back{
-                width:0.8rem;
-                height: 0.88rem;
-                line-height: 0.88rem;
-                text-align: center;
-                color:#fff;
-                font-weight: bold;
-                font-size: 0.32rem;
-            }
-        }
-        .right{
-            min-width:1.32rem;
-            line-height: 0.88rem;
-            color:#fff;
-            padding:0 0.1rem;
-        }
-        .title{
-            flex:1;
-            background:#fff;
-            border-radius:0.1rem;
-            height:0.6rem;
-            line-height:0.6rem;
-            margin-top:0.14rem;
-            color:#666;
-        }
-    }
+<style scoped>
+.header{
+     background-color: rgb(69, 142, 190);
+    width: 100%;
+    font-size: .52rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:baseline; 
+}
+.title{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin:auto 10px;
+}
+.search{ 
+    width:100%; 
+  font-size: 16px;
+  background-color: #fff;
+}
+    
 </style>
