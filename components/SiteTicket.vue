@@ -140,7 +140,9 @@ export default {
   justify-content: space-around;
   align-content: center;
 }
-
+.ant-tabs-nav-container{
+  font-size: 18px;
+}
 .ant-tabs-nav .ant-tabs-tab{
   margin:0
 }

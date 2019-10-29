@@ -3,12 +3,12 @@
     <!-- 走马灯 -->
     <a-carousel >
      <div v-for="(item, index) in pages" :key="index" >
-       <div class="icon">
+       <div class="icon" @click="icondetail"  >
         <div v-for="icon in item" :key="icon.id" class="icon-img">
-           <nuxt-link :to="'/iconlist/'+icon.id" tag="a"> 
-               <img class="icon-img-inner" :src="icon.imgUrl" />
-               <p class="icon-desc">{{ icon.desc }}</p>
-           </nuxt-link>
+           <div > 
+               <img class="icon-img-inner" :src="icon.imgUrl"  />
+               <p class="icon-desc" @click="icondetail">{{ icon.desc }}</p>
+           </div>
         </div>
       </div>
       </div>
@@ -45,7 +45,7 @@ export default {
       //6个图标为一页
       const pages = [];
       this.iconList.forEach((item, index) => {
-        const page = Math.floor(index / 6);
+        const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
         }
@@ -53,7 +53,12 @@ export default {
       });
       return pages;
     }
-  }
+  },
+  methods: {
+    icondetail(){
+      this.$router.push('/iconlist')
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -65,7 +70,7 @@ export default {
   width:100%;
   min-height:200px;
   display:grid;
-  grid-template-columns: repeat(3,33.33%);
+  grid-template-columns: repeat(4,25%);
   grid-template-rows: 50% 50%;
 }
 .icon-img{
@@ -78,7 +83,7 @@ export default {
 
 .icon-img-inner{
   width:50%;
-  height:50%;
+  height:59.67%;
   display: inline-block;
   margin:0 auto;
 }

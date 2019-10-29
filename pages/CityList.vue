@@ -3,10 +3,9 @@
     <!-- 返回详情页 -->
     <div  @click="back">
      <a-affix :offsetTop="23">
-       <a-icon type="left-square" />
   </a-affix>
   </div>
-    <vue-initial-list :options="options" />
+    <vue-initial-list :options="options" @click="back" />
   </div>
 </template>
 
@@ -33,7 +32,7 @@ export default {
     }
   },
     back(){
-      this.$router.push("home")
+      this.$router.push("/")
     }
   }
 };

@@ -7,9 +7,9 @@
         <ul class="list">
             <li class="list-item" v-for="item in recommendList" :key="item.id">
                 <img class="content-img" :src="item.imgUrl" @click="navToDetail" />
-                <div class="desc">
+                <div class="desc1">
                   <div class="name">{{item.title}}</div>
-                  <div class="desc">{{item.desc}}</div>
+                  <div class="desc1">{{item.desc}}</div>
                   <div class="price">¥60起</div>
                 </div>
             </li>
@@ -66,7 +66,7 @@ export default {
   height: 90px;
   margin-right: 10px;
 }
-.desc{
+.desc1{
   line-height: 1.5;
   font-size: 18px;
 }

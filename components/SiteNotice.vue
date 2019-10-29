@@ -1,9 +1,9 @@
 <template>
 <div class="notice-wrap">
     <img src="../assets/images/notice.png" alt="" class="image">
-    <div>
+    
         <span class="text">{{notice}}</span>
-    </div>
+    
 </div>
 </template>
 
@@ -33,7 +33,9 @@ export default {
  }
  .image{
      width: 18px;
+     height:18px;
  }
+
  .text{
      margin-left: 10px;
      font-size: 16px;

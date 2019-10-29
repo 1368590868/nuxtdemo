@@ -85,8 +85,7 @@ data() {
   margin-right: 10px;
 }
 
-.list {
-}
+
 
 .list-item {
   width: 100%;
