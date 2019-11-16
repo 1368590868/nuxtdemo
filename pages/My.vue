@@ -13,11 +13,11 @@
       <p class="back">
         <a-icon type="left" />
       </p>
-      <div class="top_detail" @click="login_register">
+      <div class="top_detail">
         <p class="icon">
           <img src="https://source.qunarzz.com/usercenter/touch/avatar.png" alt />
         </p>
-        <p class="login">登录/注册</p>
+        <p class="login" @click="goLogin">登录/注册</p>
       </div>
     </div>
     <!-- 我的钱包 -->
@@ -114,7 +114,9 @@
 <script>
 export default {
   methods: {
-    login_register() {}
+    goLogin() {
+      this.$router.push('/login')
+    }
   }
 };
 </script>

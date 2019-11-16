@@ -23,23 +23,23 @@
       <span class="ft-desc">我的</span></div>-->
       <!-- footer ant -->
       <a-menu v-model="current" mode="horizontal">
-        <a-menu-item key="0" class="ft-icon-desc">
+        <a-menu-item key="0" class="ft-icon-desc" @click="goHome">
           <a-Icon type="home" class="ft-img" />
           <span class="ft-desc">首页</span>
         </a-menu-item>
-        <a-menu-item key="1" class="ft-icon-desc">
+        <a-menu-item key="1" class="ft-icon-desc" @click="goFound">
           <a-Icon type="eye" class="ft-img" style="font-size:32px" />
           <span class="ft-desc">发现</span>
         </a-menu-item>
-        <a-menu-item key="2" class="ft-icon-desc">
+        <a-menu-item key="2" class="ft-icon-desc" >
           <a-Icon type="project" class="ft-img" />
           <span class="ft-desc">攻略</span>
         </a-menu-item>
-        <a-menu-item key="3" class="ft-icon-desc">
+        <a-menu-item key="3" class="ft-icon-desc" @click="goStrategy">
           <a-Icon type="car" class="ft-img" />
           <span class="ft-desc">行程</span>
         </a-menu-item>
-        <a-menu-item key="4" class="ft-icon-desc">
+        <a-menu-item key="4" class="ft-icon-desc" @click="goMy">
           <a-Icon type="user" class="ft-img" />
           <span class="ft-desc">我的</span>
         </a-menu-item>
@@ -74,12 +74,18 @@ export default {
   },
   mounted() {},
   methods: {
-    go(i) {
-      this.$router.push("/");
-      console.log(i);
-
-      this.$refs.ftcolor[i].style = "color:red";
-    }
+    goHome(){
+      this.$router.push('/')
+    },
+    goFound(){
+      this.$router.push('/found')
+    },
+      goMy(){
+        this.$router.push('/my')
+      },
+      goStrategy(){
+        this.$router.push('/strategy')
+      }
   }
 };
 </script>
